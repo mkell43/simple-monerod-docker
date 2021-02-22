@@ -2,6 +2,9 @@ name: "Update Image"
 on:
   schedule:
     - cron: "*/15 * * * *"
+  # Temp addition.
+  pull_request:
+    types: [opened, reopened, synchronize]
 jobs:
   rebuild-container:
     name: "Rebuild Container"
