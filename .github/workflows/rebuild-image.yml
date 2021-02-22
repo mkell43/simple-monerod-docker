@@ -2,7 +2,7 @@ name: Rebuild Container Image In Docker Hub
 on:
   schedule:
   # Run every day at noon.
-  - cron: "*/2 * * * *"
+  - cron: "0 12 * * *"
 jobs:
   rebuild:
     runs-on: ubuntu-latest
