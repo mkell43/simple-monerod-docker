@@ -13,6 +13,7 @@ jobs:
 
       # Prepare variables for later use.
       # https://stackoverflow.com/a/59819441
+      # Todo: Set `name` and `id` to something more appropriate.
       - name: "Set Variables"
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
