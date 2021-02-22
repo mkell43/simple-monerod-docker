@@ -11,8 +11,18 @@ jobs:
       - name: "Checkout"
         uses: "actions/checkout@v2"
 
+      # Prepare variables for later use.
+      # https://stackoverflow.com/a/59819441
+      - name: "Set Variables"
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
       # Run hadolint.
       - name: "Hadolint"
         uses: brpaz/hadolint-action@v1.2.1
         with:
           dockerfile: Dockerfile
+
+      # Build container image.
+      - name: "Build"
+        run: docker build . --file Dockerfile --tag $GITHUB_REPOSITORY:${{ steps.vars.outputs.sha_short }}
