@@ -13,7 +13,6 @@ jobs:
       # Checkout the repo.
       - name: "Checkout"
         uses: "actions/checkout@v2"
-        with:
 
       - name: "Set Up QEMU"
         uses: docker/setup-qemu-action@v1
