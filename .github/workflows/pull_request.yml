@@ -42,6 +42,7 @@ jobs:
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
           ignore-unfixed: true
+          exit-code: 1
       
       # Upload scan output to Code Scanning Report.
       - name: "Upload Report"
