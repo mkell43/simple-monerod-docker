@@ -1,0 +1,12 @@
+name: Rebuild Container Image In Docker Hub
+on:
+  schedule:
+  # Run every day at noon.
+  - cron: "*/15 * * * *"
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    name: Triggers the rebuild in Docker Hub
+    # Sends a POST request to the webhook URL provided by Docker Hub.
+    run: |
+      curl -s -X POST ${{ secrets.DOCKER_HUB_BUILD_TRIGGER }}
