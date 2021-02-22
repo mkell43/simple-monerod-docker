@@ -1,0 +1,25 @@
+name: "Pull Request"
+on:
+  # Allows manually triggering the workflow.
+  workflow_disptach:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    paths:
+      - "Dockerfile"
+jobs:
+  check-dockerfile:
+    name: "Check Dockerfile"
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repo.
+      - name: "Checkout"
+        uses: "actions/checkout@v2"
+
+      # Run hadolint.
+      - name: "Hadolint"
+        uses: brpaz/hadolint-action@v1.2.1
+        with:
+          dockerfile: Dockerfile
