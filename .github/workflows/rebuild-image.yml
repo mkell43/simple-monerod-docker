@@ -8,5 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Sends a POST request to the webhook URL provided by Docker Hub.
-      - run: |
-        curl -s -X POST ${{ secrets.DOCKER_HUB_BUILD_TRIGGER }}
+      - name: Send request to Docker Hub to rebuild.
+        run: |
+          curl -s -X POST ${{ secrets.DOCKER_HUB_BUILD_TRIGGER }}
+        shell: bash
