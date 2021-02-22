@@ -33,7 +33,7 @@ jobs:
         run: docker build . --file Dockerfile --tag ${{ steps.vars.outputs.repo }}:${{ steps.vars.outputs.sha_short }}
 
       # Use Trivy to scan the image for vulnerabilities.
-      - name: "Scan Image"
+      - name: "Scan Image w/ Trivy"
         uses: aquasecurity/trivy-action@master
         id: scan
         with:
