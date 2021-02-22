@@ -8,11 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout the repo.
-      # Ensure we're checking out the main branch.
       - name: "Checkout"
         uses: "actions/checkout@v2"
         with:
-          ref: 'main'
 
       - name: "Set Up QEMU"
         uses: docker/setup-qemu-action@v1
