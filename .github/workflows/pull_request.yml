@@ -1,7 +1,5 @@
 name: "Pull Request"
 on:
-  # Allows manually triggering the workflow.
-  workflow_disptach:
   pull_request:
     types:
       - opened
