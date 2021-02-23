@@ -21,6 +21,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
           repository: mkell43/simple-monerod-docker/simple-monerod
           tags: latest
           # TODO: Test that a release tag stays assigned to the rebuilt container when release tagged.
