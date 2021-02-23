@@ -20,4 +20,4 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: ${{ github.repoository }}/simple-monerod
+          repository: ${{ github.repository }}/simple-monerod
