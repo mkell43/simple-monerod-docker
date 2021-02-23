@@ -14,10 +14,25 @@ jobs:
       - name: "Checkout"
         uses: "actions/checkout@v2"
 
+      # Prepare variables for later use.
+      # https://stackoverflow.com/a/59819441
+      # In testing, the docker-push-action didn seem to support using $GITHUB_REPOSITORY.
+      # Setting it as an output from this step allows passing the repository name
+      #   to the docker-push-action.
+      - name: "Set Variables"
+        id: vars
+        run: |
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+          echo "::set-output name=repo::$GITHUB_REPOSITORY"
+
       - name: "Build and Push"
         uses: docker/build-push-action@v1
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: ${{ github.repository }}/simple-monerod
+          #repository: ${{ github.repository }}/simple-monerod
+          # Repository isn't getting passed??????????
+          # Try trick from pull_request.yml?
+          # Simple Docker file to speed up testing.
+          repository: ${{ steps.vars.outputs.repo }}/simple-monerod
