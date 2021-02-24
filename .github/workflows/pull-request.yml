@@ -1,0 +1,19 @@
+name: "Pull Request"
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+jobs:
+  check-dockerfile:
+    name: "Check Dockerfile"
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repo.
+      - name: "Checkout"
+        uses: "actions/checkout@v2"
+
+      # Run hadolint.
+      - name: "Lint Dockerfile"
+        uses: reviewdog/action-hadolint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
